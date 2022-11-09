@@ -1,3 +1,5 @@
+var playerMoney = 10;
+
 var playerName = window.prompt("What's your robot's name?");
 
 var playerHealth = 100;
@@ -44,6 +46,19 @@ var fight = function() {
         // if player choses to skip
     
     } else if (promptFight === 'skip' || promptFight === 'SKIP') {
+        //confirm the player wants to skip
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?")
+
+        //if yes, leave fight
+        if (confirmSkip) {
+            window.alert(playerName + " has decided to skip this fight. Goodbye!");
+            // subtract money from playerMoney for skipping
+            playerMoney = playerMoney - 2;
+        }
+        // if no, ask question again by running fight() again
+        else {
+            fight();
+        }
         window.alert(playerName + " has chosen to skip the fight!");
     } else {
         window.alert("You need to choose a valid option. Try again!")
